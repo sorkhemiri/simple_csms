@@ -159,3 +159,6 @@ media
 
 # beat db
 celerybeat-schedule.db
+
+# env example
+.env.example
