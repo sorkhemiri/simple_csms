@@ -25,8 +25,9 @@ app.add_middleware(
 app.include_router(main_router)
 
 if env_config.debug:
-    app.mount("/static", StaticFiles(directory=join(SOURCE_DIR, "static")), name="static")
-
+    app.mount(
+        "/static", StaticFiles(directory=join(SOURCE_DIR, "static")), name="static"
+    )
 
     @app.get("/docs", include_in_schema=False)
     async def custom_swagger_ui_html():
@@ -37,6 +38,7 @@ if env_config.debug:
             swagger_js_url="/static/swagger-ui-bundle.js",
             swagger_css_url="/static/swagger-ui.css",
         )
+
 
 if env_config.debug and __name__ == "__main__":
     import uvicorn
