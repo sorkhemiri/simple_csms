@@ -53,3 +53,23 @@ class RateEndPointTestCase:
                 "overall": 0,
                 "components": {"energy": 0, "time": 0, "transaction": 0},
             }
+
+    @staticmethod
+    def test_invalid_date():
+        with TestClient(app) as client:
+            data = {
+                "rate": {"energy": 0, "time": 0, "transaction": 0},
+                "cdr": {
+                    "meterStart": 0,
+                    "timestampStart": "0000-00-00T00:00:00Z",
+                    "meterStop": 0,
+                    "timestampStop": "0000-00-00T00:00:00Z",
+                },
+            }
+
+            response = client.post(
+                "/rate",
+                data=json.dumps(data),
+                headers={"Content-Type": "application/json"},
+            )
+            assert 422 == response.status_code
