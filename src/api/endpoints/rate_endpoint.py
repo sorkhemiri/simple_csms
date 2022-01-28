@@ -9,6 +9,7 @@ from validators import RateEndpointValidator
 
 router = APIRouter()
 
+
 @router.post("/rate", tags=["rating"])
 def rate_endpoint(request: Request, request_data: RateEndpointValidator):
     rate = request_data.rate

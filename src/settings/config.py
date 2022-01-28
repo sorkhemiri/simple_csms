@@ -4,6 +4,7 @@ from pydantic import BaseSettings
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+
 class Config(BaseSettings):
     debug: bool = True
     # SWAGGER CONFIG
@@ -12,9 +13,11 @@ class Config(BaseSettings):
     app_version: str = "0.1.0"
 
     exposed_port: int = 8000
+
     class Config:
         case_sensitive = False
         env_file = os.path.join(BASE_DIR, ".env")
         env_file_encoding = "utf-8"
+
 
 env_config = Config()

@@ -21,6 +21,7 @@ app.add_middleware(
 app.include_router(main_router)
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
+
 @app.get("/docs", include_in_schema=False)
 async def custom_swagger_ui_html():
     return get_swagger_ui_html(
