@@ -7,13 +7,12 @@ from router import main_router
 from starlette.middleware.cors import CORSMiddleware
 import http.cookies
 
-
 http.cookies._is_legal_key = lambda _: True
 
 app = FastAPI(
     title=env_config.app_title,
     description=env_config.app_description,
-    version=env_config.app_version
+    version=env_config.app_version,
 )
 app.add_middleware(
     CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"]
@@ -21,7 +20,6 @@ app.add_middleware(
 
 app.include_router(main_router)
 app.mount("/static", StaticFiles(directory="static"), name="static")
-
 
 @app.get("/docs", include_in_schema=False)
 async def custom_swagger_ui_html():
