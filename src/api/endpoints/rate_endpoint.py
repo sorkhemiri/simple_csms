@@ -11,7 +11,7 @@ router = APIRouter()
 
 
 @router.post("/rate", tags=["rating"])
-def rate_endpoint(request: Request, request_data: RateEndpointValidator):
+async def rate_endpoint(request: Request, request_data: RateEndpointValidator):
     rate = request_data.rate
     cdr = request_data.cdr
     total_consumed_energy = (cdr.meterStop - cdr.meterStart) / Decimal(1000)
