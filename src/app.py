@@ -7,11 +7,9 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from router import main_router
 from starlette.middleware.cors import CORSMiddleware
-import http.cookies
 
 from settings.config import SOURCE_DIR
 
-http.cookies._is_legal_key = lambda _: True
 
 app = FastAPI(
     title=env_config.app_title,
