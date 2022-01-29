@@ -1,4 +1,5 @@
 from datetime import datetime
+from decimal import Decimal
 
 from fastapi import HTTPException
 from pydantic import BaseModel, validator
@@ -6,9 +7,9 @@ from starlette.status import HTTP_400_BAD_REQUEST
 
 
 class CDRValidator(BaseModel):
-    meterStart: int
+    meterStart: Decimal
     timestampStart: datetime
-    meterStop: int
+    meterStop: Decimal
     timestampStop: datetime
 
     @validator('meterStart', 'meterStop')
