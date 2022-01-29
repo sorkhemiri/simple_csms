@@ -24,6 +24,7 @@ class Config(BaseSettings):
 
     # AUTHORIZATION
     api_key_secret: str = "e5720f7032fed2478c57b3f6a87a175a250806e3afba74fa15e5bc84032176d1"
+    api_key_name: str = "X_ACCESS_KEY"
 
     # EXPOSED PORT
     exposed_port: int = 8000

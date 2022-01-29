@@ -1,10 +1,12 @@
 from decimal import Decimal
 
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
+from fastapi.security.api_key import APIKey
 from starlette.requests import Request
 from starlette.responses import JSONResponse
 from starlette.status import HTTP_200_OK
 
+from authorizarion import check_authorization
 from utils import total_energy_calculator, total_spent_time_calculator
 from validators import RateEndpointValidator
 
@@ -12,7 +14,10 @@ router = APIRouter()
 
 
 @router.post("/rate", tags=["rating"])
-async def rate_endpoint(request: Request, request_data: RateEndpointValidator):
+async def rate_endpoint(
+        request: Request,
+        request_data: RateEndpointValidator,
+        api_key: APIKey = Depends(check_authorization)):
     rate = request_data.rate
     cdr = request_data.cdr
     total_consumed_energy = await total_energy_calculator(
