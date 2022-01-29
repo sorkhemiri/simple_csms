@@ -23,10 +23,12 @@ app.add_middleware(
 app.include_router(main_router)
 
 if env_config.debug:
+    # loading OPEN API (SWAGGER) static files
     app.mount(
         "/static", StaticFiles(directory=join(SOURCE_DIR, "static")), name="static"
     )
 
+    # route to swagger documents
     @app.get("/docs", include_in_schema=False)
     async def custom_swagger_ui_html():
         return get_swagger_ui_html(
@@ -39,6 +41,7 @@ if env_config.debug:
 
 
 if env_config.debug and __name__ == "__main__":
+    # run the project locally for development
     import uvicorn
 
     uvicorn.run(app, host="0.0.0.0", port=env_config.exposed_port, debug=True)
