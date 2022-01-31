@@ -3,6 +3,9 @@ a simple charging station management system with only one route for calculating
 the price of charging process according to CDR (charge detail record) and rating
 price information.
 
+## Note for the Reviewer
+for the second part of the challenge see [here](NOTES.md)
+
 ## Getting Started
 create a `.env` file in the root directory of the project. then copy and paste
 `.env.example` file content into the `.env` file.  
