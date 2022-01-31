@@ -15,7 +15,7 @@ venv:
 	$(VIRTUAL_ENV)/bin/pip3 install --upgrade pip wheel setuptools
 	$(VIRTUAL_ENV)/bin/pip3 install --compile --upgrade --force-reinstall --requirement dev-requirements.txt
 
-docker: docker.down docker.up
+docker: docker.down docker.up docker.log
 
 .ONESHELL:
 docker.up:
