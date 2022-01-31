@@ -17,6 +17,6 @@ The answer to the second part of the challenge is within this note. Most of thes
       POST is not Idempotent and can’t be cached on the client-side.
     - using API versioning is a step toward improvement, so it would be 
       better if we add a `/api/v1` prefix to the main route.
-    - Not using trailing forward slash in URIs, as the last character within
+    - Not using `trailing forward` slash in URIs, as the last character within
       a URI’s path, a forward slash (/) adds no semantic value and may cause
       confusion. It’s better to drop them completely.
