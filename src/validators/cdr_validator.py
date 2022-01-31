@@ -11,12 +11,13 @@ class CDRValidator(BaseModel):
     CDR validator takes values of cdr coming to the end
     point and validates the values of the CDR
     """
+
     meterStart: Decimal
     timestampStart: datetime
     meterStop: Decimal
     timestampStop: datetime
 
-    @validator('meterStart', 'meterStop')
+    @validator("meterStart", "meterStop")
     def must_be_non_negative(cls, v):
         """
         checks if field value is non-negative
@@ -26,8 +27,8 @@ class CDRValidator(BaseModel):
         if not v >= 0:
             raise HTTPException(
                 status_code=HTTP_400_BAD_REQUEST,
-                detail="meterStart and meterStop must be non-negative"
-                )
+                detail="meterStart and meterStop must be non-negative",
+            )
         return v
 
     def __init__(self, *args, **kwargs):
@@ -36,11 +37,11 @@ class CDRValidator(BaseModel):
         if self.timestampStart > self.timestampStop:
             raise HTTPException(
                 status_code=HTTP_400_BAD_REQUEST,
-                detail="timestampStart must be less or equal to timestampStop"
+                detail="timestampStart must be less or equal to timestampStop",
             )
         # checking is meter stop value is more than meter start value
         if self.meterStart > self.meterStop:
             raise HTTPException(
                 status_code=HTTP_400_BAD_REQUEST,
-                detail="meterStart must be less or equal to meterStop"
+                detail="meterStart must be less or equal to meterStop",
             )

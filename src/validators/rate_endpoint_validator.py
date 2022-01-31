@@ -9,5 +9,6 @@ class RateEndpointValidator(BaseModel):
     takes values of cdr coming to the endpoint
     and validates them based on the logic
     """
+
     cdr: CDRValidator
     rate: RateValidator
