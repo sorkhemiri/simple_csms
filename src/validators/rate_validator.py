@@ -4,7 +4,6 @@ from fastapi import HTTPException
 from pydantic import BaseModel, validator
 from starlette.status import HTTP_400_BAD_REQUEST
 
-
 class RateValidator(BaseModel):
     """
     RATE validator takes rate values coming to the end

@@ -5,7 +5,6 @@ from fastapi.testclient import TestClient
 from app import app
 from settings import env_config
 
-
 class RateEndPointTestCase:
     @staticmethod
     def test_authorization():
@@ -38,7 +37,6 @@ class RateEndPointTestCase:
             )
             assert 403 == response.status_code
             assert {"detail": "invalid credentials"} == response.json()
-
     @staticmethod
     def test_example_testcase():
         with TestClient(app) as client:
@@ -65,7 +63,6 @@ class RateEndPointTestCase:
                 "overall": 7.04,
                 "components": {"energy": 3.277, "time": 2.767, "transaction": 1},
             }
-
     @staticmethod
     def test_zero_state():
         with TestClient(app) as client:
@@ -92,7 +89,6 @@ class RateEndPointTestCase:
                 "overall": 0,
                 "components": {"energy": 0, "time": 0, "transaction": 0},
             }
-
     @staticmethod
     def test_invalid_date():
         with TestClient(app) as client:
@@ -115,7 +111,6 @@ class RateEndPointTestCase:
                 },
             )
             assert 422 == response.status_code
-
     @staticmethod
     def test_start_date_gt_end_date():
         with TestClient(app) as client:
@@ -141,7 +136,6 @@ class RateEndPointTestCase:
             assert response.json() == {
                 "detail": "timestampStart must be less or equal to timestampStop"
             }
-
     @staticmethod
     def test_start_meter_gt_end_meter():
         with TestClient(app) as client:
@@ -167,7 +161,6 @@ class RateEndPointTestCase:
             assert response.json() == {
                 "detail": "meterStart must be less or equal to meterStop"
             }
-
     @staticmethod
     def test_negative_values():
         with TestClient(app) as client:

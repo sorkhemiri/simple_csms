@@ -5,7 +5,6 @@ from fastapi import HTTPException
 from pydantic import BaseModel, validator
 from starlette.status import HTTP_400_BAD_REQUEST
 
-
 class CDRValidator(BaseModel):
     """
     CDR validator takes values of cdr coming to the end
@@ -30,7 +29,6 @@ class CDRValidator(BaseModel):
                 detail="meterStart and meterStop must be non-negative",
             )
         return v
-
     def __init__(self, *args, **kwargs):
         super(CDRValidator, self).__init__(*args, **kwargs)
         # checking if stop time is after the start time

@@ -6,7 +6,6 @@ from settings import env_config
 
 api_key_header = APIKeyHeader(name=env_config.api_key_name)
 
-
 async def check_authorization(
     api_key_header_value: str = Security(api_key_header),
 ) -> str:

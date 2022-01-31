@@ -4,7 +4,6 @@ from decimal import Decimal
 from fastapi import HTTPException
 from starlette.status import HTTP_400_BAD_REQUEST
 
-
 async def total_energy_calculator(meter_start: Decimal, meter_stop: Decimal) -> Decimal:
     """
     takes start and stop of energy meter and calculates
@@ -26,7 +25,6 @@ async def total_energy_calculator(meter_start: Decimal, meter_stop: Decimal) -> 
             detail="meterStart and meterStop must be non-negative",
         )
     return (meter_stop - meter_start) / Decimal(1000)
-
 
 async def total_spent_time_calculator(start_time: datetime, stop_time: datetime):
     """

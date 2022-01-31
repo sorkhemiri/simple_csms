@@ -10,7 +10,6 @@ from starlette.middleware.cors import CORSMiddleware
 
 from settings.config import SOURCE_DIR
 
-
 app = FastAPI(
     title=env_config.app_title,
     description=env_config.app_description,
@@ -38,7 +37,6 @@ if env_config.debug:
             swagger_js_url="/static/swagger-ui-bundle.js",
             swagger_css_url="/static/swagger-ui.css",
         )
-
 
 if env_config.debug and __name__ == "__main__":
     # run the project locally for development
