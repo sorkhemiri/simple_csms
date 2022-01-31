@@ -1,5 +1,3 @@
-from decimal import Decimal
-
 from fastapi import APIRouter, Depends
 from fastapi.security.api_key import APIKey
 from starlette.requests import Request

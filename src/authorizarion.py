@@ -1,6 +1,6 @@
 from fastapi import Security
 from fastapi.exceptions import HTTPException
-from fastapi.security.api_key import APIKey, APIKeyHeader
+from fastapi.security.api_key import APIKeyHeader
 
 from settings import env_config
 
