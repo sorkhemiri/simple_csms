@@ -24,3 +24,36 @@ API_KEY_SECRET=your_desired_value
 remember to set the value as the value of `X_ACCESS_KEY` header (you can change the
 header key by setting your desired name as value for `API_KEY_NAME` in the `.env` file just like above.) in the
 request.
+
+# Building The Project
+## Running Using Docker
+if you have docker and docker-compose installed you can build the project
+by the command below in the project root directory.
+```bash
+make docker
+```
+
+## Build Locally (For Development)
+run the command below in the project root directory to build the project 
+locally (without using Docker):
+```bash
+make build
+```
+NOTE: to see other options provided by make file run the command below in the
+root directory.
+```bash
+make help
+```
+## TESTS
+to run the tests in dockerized mode run the command below in the root directory.
+```bash
+ chmod +x run_test.sh && ./run_test.sh
+```
+to run the tests in the local build mode (without using docker) run the command
+below in the project root:
+```bash
+make test
+```
+## API DOCUMENTS
+if you are running the project in the debug mode(with `DEBUG` key set to true in
+the `.env` file, debug is true by default) you can see projects SWAGGER API in the [here](http://localhost:8000/docs).
