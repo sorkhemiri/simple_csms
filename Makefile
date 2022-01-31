@@ -1,5 +1,5 @@
 .EXPORT_ALL_VARIABLES:
-.PHONY: venv help docker
+# .PHONY: venv help docker
 # Unlike most variables, the variable SHELL is never set from the environment.
 # This is because the SHELL environment variable is used to specify your personal
 # choice of shell program for interactive use. It would be very bad for personal
@@ -19,19 +19,19 @@ docker: docker.down docker.up
 
 .ONESHELL:
 docker.up:
-	docker-compose -f dev-docker-compose.yml up --build -d
+	docker-compose up --build -d
 
 .ONESHELL:
 docker.log:
-	docker-compose -f dev-docker-compose.yml logs  --follow
+	docker-compose logs  --follow
 
 .ONESHELL:
 docker.stop:
-	docker-compose -f dev-docker-compose.yml stop
+	docker-compose stop
 
 .ONESHELL:
 docker.down:
-	docker-compose -f dev-docker-compose.yml down --volumes --rmi local  --remove-orphans
+	docker-compose down --volumes --rmi local  --remove-orphans
 
 .ONESHELL:
 flake8:
@@ -41,8 +41,6 @@ flake8:
 black:
 	$(VIRTUAL_ENV)/bin/black --line-length 88 --pyi --skip-string-normalization --safe src
 
-build: venv docker flake8 test run
-
 .ONESHELL:
 test:
 	$(VIRTUAL_ENV)/bin/pytest src
@@ -51,7 +49,7 @@ test:
 run:
 	$(VIRTUAL_ENV)/bin/python src/app.py
 
-build: venv docker flake8 test run
+build: venv test run
 
 help:
 	@echo "Usage:"
