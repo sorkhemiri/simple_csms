@@ -37,4 +37,5 @@ class Config(BaseSettings):
         env_file = os.path.join(BASE_DIR, ".env")
         env_file_encoding = "utf-8"
 
+
 env_config = Config()
